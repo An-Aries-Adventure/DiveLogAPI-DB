@@ -42,62 +42,16 @@ router.delete("/:id", function (req, res, next) {
 
 
 
-// router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
 
-//     const updateDiveRecord = await DiveRecord.findByIdAndUpdate(
-//         req.body.id,
-//         {
-//             "favorite": req.body.favorite,
-//         },
-//         { new: true }
-//     );
-//     await updateDiveRecord.save();
-//     return res.send(updateDiveRecord);
-// });
+    const updateDiveRecord = await DiveRecord.findByIdAndUpdate(
+        req.params.id, req.body, {new: true});
+
+    await updateDiveRecord.save();
+    return res.send(updateDiveRecord);
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     try {
-
-//         let result = await newDiveRecord.aggregate([
-//             { "$addFields": { "userId": { "$toObjectId": "$userId" } } },
-//             { $lookup: { from: "users", localField: "userId", foreignField: "_id", as: "userInfo" } },
-//             { $unwind: "$userInfo" },
-//             {
-//                 $project: {
-//                     createdById: '$userInfo._id',
-//                     firstName: '$userInfo.firstName',
-//                     lastName: '$userInfo.lastName',
-//                     comment: '$comment',
-//                     likes: '$likes',
-//                     dislikes: '$dislikes'
-//                 }
-//             }
-
-//         ]);
-
-//         return res.send(result);
-//     } catch (ex) {
-//         return res.status(500).send(`Internal Server Error: ${ex}`);
-//     }
 
 
 module.exports = router
