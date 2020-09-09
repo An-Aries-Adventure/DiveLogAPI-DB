@@ -8,9 +8,7 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     password: { type: String, minlength: 6, required: true },
-    // timeStamp: { type: Date, timeStamp: true, default: Date },
-    // loginTime: { type: Date, timeStamp: true },
-    // profileImage: { type: String, default: 'src/client/components/images/fish.jpeg'}
+    
 })
 
 userSchema.methods.generateAuthToken = function () {
