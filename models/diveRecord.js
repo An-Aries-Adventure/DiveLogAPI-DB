@@ -31,12 +31,13 @@ const diveRecordSchema = new mongoose.Schema({
     nightDive:{type: Boolean},
     comment:{type: String},
     verifier: {type: String},
-    scubaCert: {type: Number},
+    scubaCert: {type: String},
     instructor: {type:Boolean},
     diveMaster: {type:Boolean},
     buddy: {type:Boolean},
     safetyDepth: {type: Number},
-    safetyMinutes: {type: Number}
+    safetyMinutes: {type: Number},
+    totalBottomTime: {type: Number}
 
 });
 const DiveRecord = mongoose.model('diveRecord', diveRecordSchema);
@@ -72,12 +73,13 @@ function validateDiveRecord(diveRecord) {
         nightDive:Joi.boolean(),
         comment:Joi.string().allow(""),
         verifier: Joi.string().allow(""),
-        scubaCert: Joi.number().allow(0),
+        scubaCert: Joi.string().allow(""),
         instructor: Joi.boolean(),
         diveMaster: Joi.boolean(),
         buddy: Joi.boolean(),
         safetyDepth:Joi.number().allow(0),
-        safetyMinutes: Joi.number().allow(0)
+        safetyMinutes: Joi.number().allow(0),
+        totalBottomTime: Joi.number().required()
     });
 
 
