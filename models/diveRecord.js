@@ -38,6 +38,7 @@ const diveRecordSchema = new mongoose.Schema({
     safetyDepth: {type: Number},
     safetyMinutes: {type: Number},
     totalBottomTime: {type: Number}
+    
 
 });
 const DiveRecord = mongoose.model('diveRecord', diveRecordSchema);
@@ -80,6 +81,8 @@ function validateDiveRecord(diveRecord) {
         safetyDepth:Joi.number().allow(0),
         safetyMinutes: Joi.number().allow(0),
         totalBottomTime: Joi.number().required()
+       
+
     });
 
 

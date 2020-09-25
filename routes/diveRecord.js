@@ -31,6 +31,16 @@ router.get('/', async (req, res) => {
 });
 
 
+router.get('/diveRecord/:loggedInUserId', async (req, res) => {
+    try {
+        let result = await DiveRecord.find({ userId: req.params.loggedInUserId });
+        return res.send(result);
+    }
+    catch (ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`)
+    }
+});
+
 router.delete("/:id", function (req, res, next) {
 
     DiveRecord.findByIdAndRemove(req.params.id, req.body, function (err, diveRecord) {

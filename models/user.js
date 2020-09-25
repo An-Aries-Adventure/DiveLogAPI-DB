@@ -8,12 +8,13 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     password: { type: String, minlength: 6, required: true },
+    profileImage: {type:String, default:""}
 
     
 })
 
 userSchema.methods.generateAuthToken = function () {
-    return jwt.sign({ _id: this._id, firstName: this.firstName, lastName: this.lastName, email: this.email}, config.get('jwtSecret'));
+    return jwt.sign({ _id: this._id, firstName: this.firstName, lastName: this.lastName, email: this.email, profileImage:this.profileImage}, config.get('jwtSecret'));
 };
 
 const User = mongoose.model('User', userSchema);

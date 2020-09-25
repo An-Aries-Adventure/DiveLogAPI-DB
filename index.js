@@ -5,8 +5,11 @@ const user = require('./routes/users')
 const diveRecord = require('./routes/diveRecord');
 const auth = require('./routes/auth');
 
+
+
 var cors = require('cors');
 app.use(cors());
+
 
 connectDB();
 app.use(express.json());
